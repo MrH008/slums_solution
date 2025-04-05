@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graduated from School - Job Options</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: direction 0.3s ease;
+    }
+    .top-bar {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      background-color: #2d2d2d;
+      height: 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 20px;
+      z-index: 10;
+    }
+    .language-toggle {
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page {
+      position: relative;
+      width: 95%;
+      max-width: 900px;
+      background: white;
+      border-radius: 20px;
+      border: 12px solid orange;
+      box-shadow: inset 0 0 0 8px cyan, inset 0 0 0 4px deepskyblue;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .input-group {
+      background-color: #d9d9d9;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 280px;
+      z-index: 2;
+      position: relative;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+      color: darkblue;
+      font-size: 16px;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      background-color: white;
+    }
+    .next-button {
+      padding: 12px 35px;
+      background-color: #2d2d2d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .circle {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+    }
+    .blue {
+      background: rgba(0, 123, 255, 0.5);
+      top: -100px;
+      left: -100px;
+    }
+    .orange {
+      background: rgba(255, 165, 0, 0.5);
+      bottom: -100px;
+      right: -100px;
+    }
+    @media (max-width: 600px) {
+      .input-group { width: 90%; }
+      .circle {
+        width: 300px;
+        height: 300px;
+        filter: blur(80px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="language-toggle" onclick="toggleLanguage()">
+      <span id="lang-label">EN</span>
+      <span class="globe-icon">🌐</span>
+    </div>
+  </div>
+  <div class="page">
+    <div class="circle blue"></div>
+    <div class="circle orange"></div>
+    <div class="input-group">
+      <label for="options" id="label-options">Choose a job:</label>
+      <select id="options">
+        <option>Retail worker</option>
+        <option>Office assistant</option>
+        <option>Delivery driver</option>
+        <option>Call center agent</option>
+        <option>Freelancer</option>
+        <option>Online seller</option>
+      </select>
+    </div>
+    <button onclick="window.location.href='Thanks_page.html'" class="next-button" id="next-btn">Select</button>
+  </div>
+  <script>
+    let isEnglish = true;
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+      document.getElementById("lang-label").innerText = isEnglish ? "EN" : "AR";
+      document.body.dir = isEnglish ? "ltr" : "rtl";
+      document.getElementById("label-options").innerText = isEnglish ? "Choose a job:" : "اختر خيارك:";
+      document.getElementById("next-btn").innerText = isEnglish ? "Next" : "التالي";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Age and Degree Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: direction 0.3s ease;
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2d2d2d;
+      height: 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 20px;
+      z-index: 10;
+    }
+
+    .language-toggle {
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .page {
+      position: relative;
+      width: 95%;
+      max-width: 900px;
+      background: white;
+      border-radius: 20px;
+      border: 12px solid orange;
+      box-shadow: inset 0 0 0 8px cyan, inset 0 0 0 4px deepskyblue;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .inputs-row {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .input-group {
+      background-color: #d9d9d9;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 280px;
+      z-index: 2;
+      position: relative;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+      color: darkblue;
+      font-size: 16px;
+    }
+
+    input[type="date"],
+    select {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      background-color: white;
+    }
+
+    .next-button {
+      padding: 12px 35px;
+      background-color: #2d2d2d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .circle {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+    }
+
+    .blue {
+      background: rgba(0, 123, 255, 0.5);
+      top: -100px;
+      left: -100px;
+    }
+
+    .orange {
+      background: rgba(255, 165, 0, 0.5);
+      bottom: -100px;
+      right: -100px;
+    }
+
+    @media (max-width: 600px) {
+      .input-group {
+        width: 90%;
+      }
+
+      .circle {
+        width: 300px;
+        height: 300px;
+        filter: blur(80px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="language-toggle" onclick="toggleLanguage()">
+      <span id="lang-label">EN</span>
+      <span class="globe-icon">🌐</span>
+    </div>
+  </div>
+
+  <div class="page" id="form-page">
+    <!-- Background circles -->
+    <div class="circle blue"></div>
+    <div class="circle orange"></div>
+
+    <div class="inputs-row">
+      <div class="input-group">
+        <label for="age" id="label-age">What is your age?</label>
+        <input type="date" id="age" value="2000-04-04" />
+      </div>
+
+      <div class="input-group">
+        <label for="degree" id="label-degree">What is your degree?</label>
+        <select id="degree">
+          <option value="uneducated">Uneducated</option>
+          <option value="not-finish">Not finish school</option>
+          <option value="talent">Had a talent</option>
+          <option value="school-grad">Graduated from school</option>
+          <option value="university-grad">Graduated from university</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="next-button" id="next-btn" onclick="redirectBasedOnDegree()">Next</button>
+  </div>
+
+  <script>
+    function redirectBasedOnDegree() {
+      // Get the selected degree option
+      var selectedDegree = document.getElementById("degree").value;
+  
+      // Redirect based on the selected degree
+      if (selectedDegree === "school-grad") {
+        window.location.href = "graduated_school.html";  // Redirect to school grad page
+      } else if (selectedDegree === "university-grad") {
+        window.location.href = "graduated_university.html";  // Redirect to university grad page
+      } else if (selectedDegree === "uneducated") {
+        window.location.href = "uneducated_page.html";  // Redirect to uneducated page
+      } else if (selectedDegree === "not-finish") {
+        window.location.href = "not_finish_school.html";  // Redirect to not finished page
+      } else if (selectedDegree === "talent") {
+        window.location.href = "had_a_talent.html";  // Redirect to talent page
+      }
+    }
+  </script>
+  
+  <script>
+    let isEnglish = true;
+
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+
+      document.getElementById("lang-label").innerText = isEnglish ? "EN" : "AR";
+      document.body.dir = isEnglish ? "ltr" : "rtl";
+
+      document.getElementById("label-age").innerText = isEnglish ? "What is your age?" : "ما هو عمرك؟";
+      document.getElementById("label-degree").innerText = isEnglish ? "What is your degree?" : "ما هي شهادتك؟";
+      document.getElementById("next-btn").innerText = isEnglish ? "Next" : "التالي";
+    }
+  </script>
+</body>
+</html>

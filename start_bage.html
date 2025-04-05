@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #fff;
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background: #222;
+            padding: 10px 20px;
+            color: white;
+        }
+        .icon {
+            margin-left: 5px;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            position: relative;
+        }
+        h1 {
+            color: darkblue;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .background-container {
+            position: relative;
+            width: 400px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(20px);
+        }
+        .blue {
+            background-color: rgba(0, 122, 255, 0.4);
+            left: 0;
+        }
+        .green {
+            background-color: rgba(0, 200, 83, 0.4);
+            left: 125px;
+        }
+        .orange {
+            background-color: rgba(255, 204, 0, 0.4);
+            left: 250px;
+        }
+        button {
+            background: #222;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        p {
+            color: darkblue;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <span>EN</span>
+            <span class="icon">&#x1F310;</span>
+        </div>
+    </header>
+    <main>
+        <h1>Let’s change our life</h1>
+        <div class="background-container">
+            <div class="circle blue"></div>
+            <div class="circle green"></div>
+            <div class="circle orange"></div>
+            <button onclick="window.location.href='Page2.html'">Start</button>
+        </div>
+        <p>Starting by found Job fit you</p>
+    </main>
+</body>
+</html>
